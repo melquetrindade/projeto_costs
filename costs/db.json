@@ -7,19 +7,33 @@
         "id": "3",
         "name": "Design"
       },
-      "costs": 0,
-      "services": [],
+      "costs": 50,
+      "services": [
+        {
+          "name": "Melque dev",
+          "cost": "50",
+          "description": "testando",
+          "id": "65d02ec6-bdbd-418b-8e57-be599452f927"
+        }
+      ],
       "id": "5IHuIUF6m3E"
     },
     {
-      "name": "thamiris",
+      "name": "Thamiris",
       "budget": "9000",
       "category": {
-        "id": "1",
-        "name": "Infra"
+        "id": "3",
+        "name": "Design"
       },
-      "costs": 0,
-      "services": [],
+      "costs": 100,
+      "services": [
+        {
+          "name": "teste",
+          "cost": "100",
+          "description": "testando",
+          "id": "acb2e7d5-af39-4ab5-b4a6-efdeaa151507"
+        }
+      ],
       "id": "NW24tkd6X20"
     },
     {
@@ -29,8 +43,27 @@
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "costs": 0,
-      "services": [],
+      "costs": 1030,
+      "services": [
+        {
+          "name": "Novo serviço ",
+          "cost": "1000",
+          "description": "opa",
+          "id": "79f1ae6d-5099-49a0-a45e-9892e9cf194f"
+        },
+        {
+          "name": "Novo serviço 2",
+          "cost": "10",
+          "description": "testando",
+          "id": "6bb8f144-f1e7-481e-9a0e-6edcf9162ae9"
+        },
+        {
+          "name": "Melque",
+          "cost": "20",
+          "description": "vamos lá",
+          "id": "902a2bd1-eeca-40d4-8708-622d519d4dbb"
+        }
+      ],
       "id": "CHnHtlBAvdU"
     }
   ],
