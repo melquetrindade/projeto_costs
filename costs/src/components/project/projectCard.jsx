@@ -9,7 +9,7 @@ function ProjectCard({id, key, name, budget, category, handleRemove}){
     }
 
     return (
-        <div className={styles.project_card}>
+        <div className={styles.project_card} key={key}>
             <h4>{name}</h4>
             <p>
                 <span>Orçamento:</span> R${budget}

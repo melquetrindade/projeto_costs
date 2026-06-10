@@ -12,7 +12,7 @@ import ServiceCard from '../service/serviceCard'
 function Project(){
     const {id} = useParams()
     const [project, setProject] = useState([])
-    const [services, setservices] = useState([])
+    const [services, setServices] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
     const [showServiceForm, setShowServiceForm] = useState(false)
     const [message, setMessage] = useState()
@@ -27,14 +27,12 @@ function Project(){
                 }
             }).then(resp => resp.json()).then((data) => {
                 setProject(data)
-                setservices(data.services)
+                setServices(data.services)
             }).catch(err => console.log(err))
         }, 2000)
     }, [id])
 
     function createService(project){
-        //setMessage('')
-        //pegar último serviço adicionado
         const lastService = project.services[project.services.length -1]
         lastService.id = uuidv4()
 
@@ -61,6 +59,11 @@ function Project(){
             body: JSON.stringify(project),
         }).then((resp) => resp.json()).then((data) => {
             setShowServiceForm(false)
+            setMessage("Serviço adicionado com sucesso!")
+            setType('sucess')
+            setTimeout(() => {
+                setMessage('')
+            }, 3000)
         }).catch((err) => console.log(err))
     }
 
@@ -96,7 +99,31 @@ function Project(){
         }).catch((err) => console.log(err))
     }
 
-    function removeService(){}
+    function removeService(id, cost){
+        const servicesUpdate = project.services.filter((service) => service.id !== id)
+
+        const projectUpdate = project
+
+        projectUpdate.services = servicesUpdate
+        projectUpdate.costs = parseFloat(projectUpdate.costs) - parseFloat(cost)
+
+        fetch(`http://localhost:5000/projects/${projectUpdate.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(projectUpdate)
+        }).then((resp) => resp.json()).then((data) => {
+            setProject(projectUpdate)
+            setServices(servicesUpdate)
+            setMessage('Serviço removido com sucesso!')
+            setType('sucess')
+            setTimeout(() => {
+                setMessage('')
+            }, 3000)
+
+        }).catch(err => console.log(err))
+    }
 
     return(
         <>
